@@ -8,9 +8,22 @@ while($row = mysqli_fetch_assoc($result)){
     $json_array[] = $row;
 }
 
-echo json_encode($json_array[0]);
+$contenu_json = json_encode($json_array);
+
+var_dump($contenu_json);
 
 /*echo '<pre>';
 print_r($json_array);
 echo '</pre>';*/
-?>
+
+// nom de fichier à créer
+$nom_du_fichier = 'villes.json';
+
+// ouverture du fichier
+$fichier = fopen($nom_du_fichier, 'w+');
+
+// ecriture dans le fichier
+fwrite($fichier, $contenu_json);
+
+// fermeture du fichier
+fclose($fichier);

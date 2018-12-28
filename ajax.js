@@ -1,5 +1,12 @@
 $get=(url,data,done,error)=> {
 
+    let getUrl=(objet)=>{
+        var result = new Array();
+        for(var i in objet){
+            result.push(i+"="+encodeURIComponent(objet[i]));
+        }
+        return result.join('&');
+    };
 
 	let Xhr=()=>{
       let xhr = null;   
@@ -23,7 +30,7 @@ $get=(url,data,done,error)=> {
 			     else error(xhttp)
 	     }
   }
-  
+
   url += "?"+getUrl(data)+"& cache="+new Date().getTime() ;
   xhttp.open("get", url, true);
   xhttp.send();

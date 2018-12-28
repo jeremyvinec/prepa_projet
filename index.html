@@ -8,6 +8,7 @@
             <option></option>
         </datalist>
     </body>
+    <script src="ajax.js"></script>
     <script>
         function alerte(req){
 		alert("Erreur N° " + req.status + "   " +req.statusText);
@@ -17,10 +18,10 @@
             // conversion de la chaine de caractères reçu en Json
             let temp = JSON.parse(req.responseText);
             //Creation des 12 lignes du tableau
-            for (let i=0;i<12;i++){
+            /*for (let i=0;i<12;i++){
             cl(`Mois: ${temp[i].mois} Minimum: ${temp[i].tp.getMin()} Maximum ${temp[i].tp.getMax()} Moyenne ${temp[i].tp.getMoy().toFixed(2)}`);
-            }
+            }*/
         }
-        onload=$get("json.php",null,affiche,alerte);
+        onload=$get("villes.json",null,affiche,alerte);
     </script>
 </html>
